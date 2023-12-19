@@ -47,6 +47,6 @@ public class TurnActions extends Actions{
 
     public void oneTurn(){
         HashMap<Cell, Herbivore> herbivores = map.getEntitiesOfType(Herbivore.class);
-        
+
     }
 }

@@ -36,5 +36,11 @@ public class PathFinder {
         return new PathNode(closestVictimCell);
     }
 
+    public static List<Cell> findNeighbors(Cell current){
+        List<Cell> neighbors = new ArrayList<>();
+
+
+    }
+
 
 }

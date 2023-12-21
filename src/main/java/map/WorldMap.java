@@ -35,6 +35,14 @@ public class WorldMap {
         cells.put(cell, entity);
     }
 
+    public <T extends Entity> T getEntityFromCell(Cell cell){
+        return (T) cells.get(cell);
+    }
+
+    public Class<? extends Entity> getTypeCell(Cell cell){
+        return cells.get(cell) !=null ? cells.get(cell).getClass() : null;
+    }
+
     public <T> HashMap<Cell, T> getEntitiesOfType(Class<T> typeOfEntity){
         HashMap<Cell, T> result = new HashMap<>();
         for(Map.Entry<Cell, Entity> entry: cells.entrySet()){
@@ -43,5 +51,9 @@ public class WorldMap {
             }
         }
         return result;
+    }
+
+    public boolean isInsideMapBorder(Cell cell) {
+        return cell.getY() < this.mapHeight && cell.getX() < this.mapWidth;
     }
 }

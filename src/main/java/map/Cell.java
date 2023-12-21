@@ -1,5 +1,7 @@
 package main.java.map;
 
+import main.java.searchAlgorithm.PathNode;
+
 public class Cell {
     private final int x;
     private final int y;
@@ -7,6 +9,10 @@ public class Cell {
     public Cell(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Cell(PathNode pathNode){
+        this(pathNode.getX(), pathNode.getY());
     }
 
     public int getX() {

@@ -11,7 +11,7 @@ public class WorldMap {
 
     private final Map<Cell, Entity> cells = new HashMap<>();
 
-    public int getSizeMap() {
+    public int getMapSize() {
         return mapHeight*mapWidth;
     }
 

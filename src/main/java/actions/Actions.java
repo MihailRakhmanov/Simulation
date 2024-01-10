@@ -1,12 +1,11 @@
 package main.java.actions;
 
-import main.java.entities.Entity;
 import main.java.map.Cell;
 import main.java.map.WorldMap;
 
 public abstract class Actions {
     protected WorldMap map;
-    int sizeOfMap = map.getSizeMap();
+    int sizeOfMap = map.getMapSize();
 
     public Cell getEmptyRandomCoordinates(WorldMap map){
         while (true) {

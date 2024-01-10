@@ -1,8 +1,6 @@
 package main.java.searchAlgorithm;
 
 import main.java.entities.Entity;
-import main.java.entities.stationary.Grass;
-import main.java.entities.stationary.Rock;
 import main.java.map.Cell;
 import main.java.map.WorldMap;
 

@@ -1,6 +1,7 @@
 package main.java.actions;
 
 import main.java.entities.Entity;
+import main.java.entities.creatures.Creature;
 import main.java.entities.creatures.Herbivore;
 import main.java.entities.creatures.Predator;
 import main.java.entities.stationary.Grass;
@@ -8,6 +9,7 @@ import main.java.map.Cell;
 import main.java.map.WorldMap;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class TurnActions extends Actions{
@@ -46,7 +48,11 @@ public class TurnActions extends Actions{
     }
 
     public void oneTurn(){
-        HashMap<Cell, Herbivore> herbivores = map.getEntitiesOfType(Herbivore.class);
+        enrichmentOfWorld();
 
+        for (Map.Entry<Cell, Creature> entry : map.getEntitiesOfType(Creature.class).entrySet()) {
+            Creature creature = entry.getValue();
+            creature.makeMove(entry.getKey(), map);
+        }
     }
 }

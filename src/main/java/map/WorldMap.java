@@ -56,4 +56,13 @@ public class WorldMap {
     public boolean isInsideMapBorder(Cell cell) {
         return cell.getY() < this.mapHeight && cell.getX() < this.mapWidth;
     }
+
+    public void clearCell(Cell cell){
+        cells.remove(cell);
+    }
+
+    public void changeCell(Cell start, Cell move){
+        setEntityInCell(move, getEntityFromCell(start));
+        clearCell(start);
+    }
 }

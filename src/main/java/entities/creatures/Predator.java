@@ -6,7 +6,6 @@ import main.java.searchAlgorithm.PathFinder;
 
 public class Predator extends Creature{
     private static final int damage = 2;
-    private Herbivore victim;
 
 
     public Predator() {
@@ -15,6 +14,7 @@ public class Predator extends Creature{
         speed = 2;
         hp = 3;
         satiety = 5;
+        victim = Herbivore.class;
     }
 
 
@@ -25,12 +25,12 @@ public class Predator extends Creature{
                 Herbivore herbivore = map.getEntityFromCell(neighbor);
                 if (herbivore.hp <= 0){
                     map.clearCell(neighbor);
+                    hp++;
+                    satiety = Math.min(satiety + 3, maxSatiety);
                 } else {
                     herbivore.hp -= damage;
                 }
-                hp++;
-                satiety = Math.max(satiety + 2, maxSatiety);
-                map.clearCell(neighbor);
+                return;
             }
         }
         satiety--;

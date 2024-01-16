@@ -7,26 +7,36 @@ import main.java.map.WorldMap;
 public class Simulation {
     private WorldMap map;
     public int numberIteration = 0;
-    Render render = new Render();
-    InitActions initActions = new InitActions(map);
+    private Render render;
+
+
+
 
     public Simulation() {
-        this.map = new WorldMap();
+        map = new WorldMap();
+        render = new Render();
     }
 
     protected void initWorld(){
+        InitActions initActions = new InitActions(map);
         initActions.addEntitiesToWorld();
     }
 
-    nextTurn(){
-
+    public void nextTurn(){
+        TurnActions turnActions = new TurnActions(map);
+        turnActions.oneTurn();
+        numberIteration++;
+        System.out.println("Number of iteration: " + this.numberIteration);
+        drawMap();
     }
 
-    startSimulation(){
+/*    public boolean pauseSimulation(int input){
+        boolean pause;
+        return (input == 1)? true:false;
+    }*/
 
+    public void drawMap(){
+        render.drawMap(map);
     }
 
-    pauseSimulation(){
-
-    }
 }

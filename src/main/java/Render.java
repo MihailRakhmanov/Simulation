@@ -23,7 +23,7 @@ public class Render {
 
         for (int i = 0; i<map.getMapHeight(); i++){
             for (int j = 0; j< map.getMapWidth(); j++){
-                Class<? extends Entity> typeCell = map.getTypeCell(new Cell(i, j));
+                Class<? extends Entity> typeCell = map.getTypeCell(new Cell(j, i));
 
                 if (typeCell == null) {
                     System.out.print(". " + "  ");

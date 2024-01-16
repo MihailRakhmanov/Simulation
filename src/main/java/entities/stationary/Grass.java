@@ -4,8 +4,8 @@ import main.java.entities.Entity;
 
 public class Grass extends Entity {
     public Grass() {
-        super.chanceSpawn = 0.15f;
-        super.enrichmentPoint = 0.08f;
+        this.chanceSpawn = 0.15f;
+        this.enrichmentPoint = 0.08f;
     }
 
 

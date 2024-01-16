@@ -3,7 +3,7 @@ package main.java.searchAlgorithm;
 import main.java.map.Cell;
 
 public class PathNode extends Cell {
-    private int pathWeight;
+    private int pathWeight = 0;
 
     public PathNode(int x, int y) {
         super(x, y);

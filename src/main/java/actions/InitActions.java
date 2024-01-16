@@ -13,16 +13,17 @@ import main.java.map.WorldMap;
 public class InitActions extends Actions{
 
     public InitActions(WorldMap map){
-        super.map = map;
+        super(map);
     }
 
     protected void getInitActions(Entity entity){
-        int countTypeOnMap = (int) entity.getChanceSpawn()*sizeOfMap;
+        int countTypeOnMap = (int) (entity.getChanceSpawn()*sizeOfMap);
         int currentRate = 0;
 
         while (currentRate<countTypeOnMap){
             Cell cell = getEmptyRandomCoordinates(map);
             map.setEntityInCell(cell, entity);
+            currentRate++;
         }
     }
 

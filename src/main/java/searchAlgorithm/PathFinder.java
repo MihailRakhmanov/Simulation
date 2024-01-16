@@ -37,14 +37,14 @@ public class PathFinder {
             for (Cell nextCell: findNeighbors(currentNode)){
                 PathNode nextNode = new PathNode(nextCell);
 
-                int newWeight = currentNode.getPathWeight() + weightOfMovingToNeighborPathNode(currentNode, nextNode, map);
+                int newWeight = openList.get(currentNode) + weightOfMovingToNeighborPathNode(currentNode, nextNode);
                 // Ходить только по пустым клеткам
                 if((map.isEmptyCell(nextCell) || map.getTypeCell(nextCell)==victim) && map.isInsideMapBorder(nextCell)){
-                    if(!openList.containsKey(nextNode) || newWeight<openList.get(nextNode)){
+                    if(!openList.containsKey(nextNode) || newWeight < openList.get(nextNode)){
                         openList.put(nextNode, newWeight);
                         nextNode.setPathWeight(newWeight + heuristicDistance(nextNode, target));
-                        PathFinderList<PathNode> newPath = new PathFinderList<>();
-                        newPath.addAll(currentPath);
+
+                        PathFinderList<PathNode> newPath = new PathFinderList<>(currentPath);
                         newPath.add(nextNode);
                         openPathNodeLists.add(newPath);
                     }
@@ -58,8 +58,8 @@ public class PathFinder {
         return (Math.abs(finish.getX() - start.getX()) + Math.abs(finish.getY()-start.getY())) * PATH_WEIGHT_DIRECT;
     }
 
-    private int weightOfMovingToNeighborPathNode(PathNode current, PathNode neighbor, WorldMap map){
-        int modifier = 1;
+    private int weightOfMovingToNeighborPathNode(PathNode current, PathNode neighbor){
+        //int modifier = 1;
 
         // Прохождение через Камни, лес и траву
         /*        int modifier;
@@ -72,7 +72,8 @@ public class PathFinder {
         }*/
 
         return neighbor.getY() != current.getY() && neighbor.getX() != current.getX()
-                ? PATH_WEIGHT_DIAGONAL*modifier : PATH_WEIGHT_DIRECT*modifier;
+                ? PATH_WEIGHT_DIAGONAL : PATH_WEIGHT_DIRECT;
+               //? PATH_WEIGHT_DIAGONAL*modifier : PATH_WEIGHT_DIRECT*modifier;
     }
 
     public PathNode smellVictim(WorldMap map, Cell start){

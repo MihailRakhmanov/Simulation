@@ -11,8 +11,8 @@ public abstract class Creature extends Entity {
     protected int speed;
     protected int hp;
     protected int satiety;
-    protected static final int maxSatiety = 5;
-    private Class<? extends Entity> victim;
+    protected static final int maxSatiety = 6;
+    protected Class<? extends Entity> victim;
 
     public void makeMove(Cell start, WorldMap map){
         if (satiety <= 0) hp--;
@@ -25,7 +25,7 @@ public abstract class Creature extends Entity {
 
         if (goal != null) {
             PathFinderList<PathNode> path = pathFinder.getPathToTarget(new PathNode(start), goal, map);
-            if (!path.isEmpty()){
+            if (path != null && !path.isEmpty()){
                 int maxStepsPerMove = Math.min(speed, path.size());
                 Cell move = path.get(maxStepsPerMove);
                 if (move.equals(goal)){
@@ -36,27 +36,4 @@ public abstract class Creature extends Entity {
         }
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    public int getSatiety() {
-        return satiety;
-    }
-
-    public void setSatiety(int satiety) {
-        this.satiety = satiety;
-    }
 }

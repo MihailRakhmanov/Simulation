@@ -89,7 +89,8 @@ public class PathFinder {
                 closestVictimCell = cell;
             }
         }
-        return new PathNode(closestVictimCell);
+        return new PathNode(closestVictimCell.getX(), closestVictimCell.getY());
+        //return new PathNode(closestVictimCell);
     }
 
     public static List<Cell> findNeighbors(Cell current){
@@ -98,7 +99,7 @@ public class PathFinder {
         int col = current.getX();
         for (int i = col-1; i<col+2; i++){
             for (int j = row - 1; j<row+2; j++){
-                if ((i != col || j != row) && (col >= 0) && (row >= 0)){
+                if ((i != col || j != row) && (i >= 0) && (j >= 0)){
                     neighbors.add(new Cell(i, j));
                 }
             }

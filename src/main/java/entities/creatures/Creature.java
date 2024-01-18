@@ -27,10 +27,11 @@ public abstract class Creature extends Entity {
             PathFinderList<PathNode> path = pathFinder.getPathToTarget(new PathNode(start), goal, map);
             if (path != null && !path.isEmpty()){
                 int maxStepsPerMove = Math.min(speed, path.size());
-                Cell move = path.get(maxStepsPerMove);
+                Cell move = new Cell(path.get(maxStepsPerMove));
                 if (move.equals(goal)){
-                    move = path.get(maxStepsPerMove-1);
+                    move = new Cell(path.get(maxStepsPerMove-1));
                 }
+                //Cell cellMove = new Cell(move);
                 map.changeCell(start, move);
             }
         }

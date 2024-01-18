@@ -23,12 +23,14 @@ public class Predator extends Creature{
         for (Cell neighbor : PathFinder.findNeighbors(start)){
             if (map.getTypeCell(neighbor) == Herbivore.class){
                 Herbivore herbivore = map.getEntityFromCell(neighbor);
+
+                herbivore.hp -= damage;
+                System.out.println("Мышь получила урон: " + neighbor.toString());
                 if (herbivore.hp <= 0){
                     map.clearCell(neighbor);
+                    System.out.println("Мышь съедена: " + neighbor.toString());
                     hp++;
                     satiety = Math.min(satiety + 3, maxSatiety);
-                } else {
-                    herbivore.hp -= damage;
                 }
                 return;
             }

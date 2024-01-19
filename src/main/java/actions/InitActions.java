@@ -22,10 +22,11 @@ public class InitActions extends Actions{
 
         while (currentRate<countTypeOnMap){
             Cell cell = getEmptyRandomCoordinates(map);
-            map.setEntityInCell(cell, entity);
+            map.setEntityInCell(cell, entity.spawnEntity());
             currentRate++;
         }
     }
+
 
     public void addEntitiesToWorld(){
         getInitActions(new Grass());

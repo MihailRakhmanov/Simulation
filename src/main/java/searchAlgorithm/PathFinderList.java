@@ -18,10 +18,6 @@ public class PathFinderList<T> implements Comparable<PathFinderList<T>> {
         pathNodeList.add(pathNode);
     }
 
-    /*public void addAll(PathFinderList<PathNode> list){
-
-        this.pathNodeList.addAll(list.getPathNodeList());
-    }*/
 
     @Override
     public int compareTo(PathFinderList<T> o) {
@@ -30,11 +26,6 @@ public class PathFinderList<T> implements Comparable<PathFinderList<T>> {
 
         return pathWeightThis-pathWeightInput;
     }
-
-/*    public List<PathNode> getPathNodeList() {
-        return pathNodeList;
-    }*/
-
 
 
     public PathNode get(int i) {

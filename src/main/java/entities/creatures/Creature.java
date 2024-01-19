@@ -19,6 +19,7 @@ public abstract class Creature extends Entity {
         if (hp <= 0) {
             map.clearCell(start);
             return;
+
         }
         PathFinder pathFinder = new PathFinder(victim);
         PathNode goal = pathFinder.smellVictim(map, start);
@@ -31,7 +32,6 @@ public abstract class Creature extends Entity {
                 if (move.equals(goal)){
                     move = new Cell(path.get(maxStepsPerMove-1));
                 }
-                //Cell cellMove = new Cell(move);
                 map.changeCell(start, move);
             }
         }

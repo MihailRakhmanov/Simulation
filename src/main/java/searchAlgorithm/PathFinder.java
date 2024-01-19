@@ -59,21 +59,8 @@ public class PathFinder {
     }
 
     private int weightOfMovingToNeighborPathNode(PathNode current, PathNode neighbor){
-        //int modifier = 1;
-
-        // Прохождение через Камни, лес и траву
-        /*        int modifier;
-        if (map.getTypeCell(new Cell(neighbor)) == Rock.class){
-            modifier = 5;
-        } else if (map.getTypeCell(new Cell(neighbor)) == Tree.class || map.getTypeCell(new Cell(neighbor)) == Grass.class) {
-            modifier = 2;
-        } else {
-            modifier = 1;
-        }*/
-
         return neighbor.getY() != current.getY() && neighbor.getX() != current.getX()
                 ? PATH_WEIGHT_DIAGONAL : PATH_WEIGHT_DIRECT;
-               //? PATH_WEIGHT_DIAGONAL*modifier : PATH_WEIGHT_DIRECT*modifier;
     }
 
     public PathNode smellVictim(WorldMap map, Cell start){
@@ -90,7 +77,6 @@ public class PathFinder {
             }
         }
         return new PathNode(closestVictimCell.getX(), closestVictimCell.getY());
-        //return new PathNode(closestVictimCell);
     }
 
     public static List<Cell> findNeighbors(Cell current){

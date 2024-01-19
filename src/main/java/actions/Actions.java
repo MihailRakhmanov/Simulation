@@ -17,7 +17,6 @@ public abstract class Actions {
             int x = (int) (Math.random() * map.getMapWidth());
             int y = (int) (Math.random() * map.getMapHeight());
             Cell cell = new Cell(x,y);
-            // Нужно ли второе условие map.isInsideMapBorder(cell)?
             if (map.isEmptyCell(cell) && map.isInsideMapBorder(cell)) {
                 return cell;
             }

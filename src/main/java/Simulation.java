@@ -9,9 +9,6 @@ public class Simulation {
     public int numberIteration = 0;
     private Render render;
 
-
-
-
     public Simulation() {
         map = new WorldMap();
         render = new Render();
@@ -29,11 +26,6 @@ public class Simulation {
         System.out.println("Number of iteration: " + this.numberIteration);
         drawMap();
     }
-
-/*    public boolean pauseSimulation(int input){
-        boolean pause;
-        return (input == 1)? true:false;
-    }*/
 
     public void drawMap(){
         render.drawMap(map);

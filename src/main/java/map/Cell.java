@@ -26,9 +26,8 @@ public class Cell {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Cell cell = (Cell) o;
+        if (o == null ) return false;
+        if (!(o instanceof Cell cell)) return false;
 
         if (x != cell.x) return false;
         return y == cell.y;

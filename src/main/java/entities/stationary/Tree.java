@@ -7,4 +7,9 @@ public class Tree extends Entity {
         super.chanceSpawn = 0.1f;
         super.enrichmentPoint = 0.1f;
     }
+
+    @Override
+    public Entity spawnEntity() {
+        return new Tree();
+    }
 }

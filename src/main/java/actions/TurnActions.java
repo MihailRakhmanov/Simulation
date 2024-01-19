@@ -24,12 +24,13 @@ public class TurnActions extends Actions{
 
         if (checkOfQuantity(grass)) {
             addEntitiesToWorld(grass);
-        } else if (checkOfQuantity(herbivore)) {
+        }
+        if (checkOfQuantity(herbivore)) {
             addEntitiesToWorld(herbivore);
-        } else if (checkOfQuantity(predator)) {
+        }
+        if (checkOfQuantity(predator)) {
             addEntitiesToWorld(predator);
         }
-
     }
 
     protected boolean checkOfQuantity(Entity entity){
@@ -38,16 +39,18 @@ public class TurnActions extends Actions{
 
     protected void addEntitiesToWorld(Entity entity){
         int minCountTypeOnMap = (int) (entity.getEnrichmentPoint()*sizeOfMap);
-        int currentRate = 30; //map.getEntitiesOfType(entity.getClass()).size();
+        //int currentRate = 30;
+        int currentRate = map.getEntitiesOfType(entity.getClass()).size();
 
         while (currentRate<minCountTypeOnMap){
             Cell cell = getEmptyRandomCoordinates(map);
-            map.setEntityInCell(cell, entity);
+            map.setEntityInCell(cell, entity.spawnEntity());
+            currentRate++;
         }
     }
 
     public void oneTurn(){
-        //enrichmentOfWorld();
+        enrichmentOfWorld();
 
         for (Map.Entry<Cell, Creature> entry : map.getEntitiesOfType(Creature.class).entrySet()) {
             Creature creature = entry.getValue();

@@ -6,13 +6,12 @@ import main.java.map.Cell;
 import main.java.map.WorldMap;
 import main.java.searchAlgorithm.PathFinder;
 
-// Травоядное. Стремится найти ресурс (траву), может потратить свой ход на движение в сторону травы, либо на её поглощение.
+
 public class Herbivore extends Creature{
 
     public Herbivore() {
-        //super.chanceSpawn = 0.07f;
         chanceSpawn = 0.07f;
-        enrichmentPoint = 0.04f;
+        enrichmentPoint = 0.05f;
         speed = 1;
         hp = 5;
         satiety = 5;
@@ -31,5 +30,10 @@ public class Herbivore extends Creature{
         }
         satiety--;
         super.makeMove(start, map);
+    }
+
+    @Override
+    public Entity spawnEntity() {
+        return new Herbivore();
     }
 }

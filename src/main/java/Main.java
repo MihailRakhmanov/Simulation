@@ -23,36 +23,27 @@ public class Main {
         System.out.println("Welcome to the Simulation!");
         System.out.println("=======================================");
 
+        loopOfGame:
         while (true) {
             mainGameMenu();
             switch (scanner.next()) {
                 case MENU_EXIT -> System.exit(0);
                 case MENU_NEXT_STEP -> simulation.nextTurn();
                 case MENU_START_SIMULATION -> {
-                    //int userInput = CONTINUE_ENDLESS_SIM;
                     while (true) {
                         int userInput = inputInSimulation();
-                        if (userInput == STOP_ENDLESS_SIM) break;
+                        if (userInput == STOP_ENDLESS_SIM) break loopOfGame;
                         if (userInput == CONTINUE_ENDLESS_SIM || userInput == -1) {
                             simulation.nextTurn();
-                            System.out.println("You can enter: 1 - to pause, 2 - to continue, 3 - to stop");
+                            System.out.println("You can enter: 1 - to pause, 2 - to continue, 3 - to exit");
                         }
                         if (userInput == PAUSE_ENDLESS_SIM) {
-                            System.out.println("You can enter: 2 - to continue, 3 - to stop");
+                            System.out.println("You can enter: 2 - to continue, 3 - to exit");
+                            break;
                         }
                     }
                 }
-/*                case MENU_START_SIMULATION -> {
-                    int userInput = CONTINUE_ENDLESS_SIM;
-                    while (true) {
-                        userInput = inputInSimulation(userInput);
-                        if (userInput == STOP_ENDLESS_SIM) break;
-                        if (userInput == CONTINUE_ENDLESS_SIM) {
-                            simulation.nextTurn();
-                            System.out.println("You can enter: 1 - to pause, 2 - to continue, 3 - to stop");
-                        }
-                    }
-                }*/
+
                 case MENU_NEW_MAP -> {
                     System.out.println("\033[H\033[2J");
                     System.out.flush();
@@ -75,7 +66,7 @@ public class Main {
 
     private static int inputInSimulation() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             if (System.in.available() > 0) {
                 Scanner scanner = new Scanner(System.in);
                 int res = scanner.nextInt();
@@ -88,18 +79,5 @@ public class Main {
         }
         return -1;
     }
-    /*private static int inputInSimulation(int current) {
-        try {
-            Thread.sleep(2000);
-            if (System.in.available() > 0) {
-                Scanner scanner = new Scanner(System.in);
-                int res = scanner.nextInt();
-                if (res == PAUSE_ENDLESS_SIM || res == STOP_ENDLESS_SIM || res == CONTINUE_ENDLESS_SIM) return res;
-                return current;
-            }
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
-        return current;
-    }*/
+
 }
